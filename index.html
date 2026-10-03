@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>NetFilla - The Ultimate Cinematic Experience</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root { --primary-red: #E50914; --bg-dark: #000000; --apple-ease: cubic-bezier(0.16, 1, 0.3, 1); }
+        body { margin: 0; background-color: #09090b; font-family: 'Inter', sans-serif; color: #fff; -webkit-font-smoothing: antialiased; }
+        
+        /* Strict Mobile Container */
+        .mobile-container { width: 100%; max-width: 480px; margin: 0 auto; min-height: 100dvh; background-color: var(--bg-dark); position: relative; box-shadow: 0 0 50px rgba(0,0,0,0.8); overflow-x: hidden; border-left: 1px solid rgba(255,255,255,0.05); border-right: 1px solid rgba(255,255,255,0.05); }
+
+        .glass-card { background: rgba(30, 30, 32, 0.5); backdrop-filter: blur(25px); border: 1px solid rgba(255, 255, 255, 0.08); box-shadow: 0 20px 40px rgba(0,0,0,0.5); border-radius: 24px; transition: transform 0.4s var(--apple-ease); }
+        .glass-card:active { transform: scale(0.96); }
+
+        .btn-premium { background: linear-gradient(135deg, #FF1E27 0%, #B80009 100%); box-shadow: 0 10px 20px rgba(229, 9, 20, 0.3), inset 0 1px 2px rgba(255,255,255,0.3); transition: all 0.3s ease; }
+        .btn-premium:active { transform: scale(0.95); }
+        
+        .btn-glass { background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.2); transition: all 0.3s ease; }
+        .btn-glass:active { transform: scale(0.95); background: rgba(255,255,255,0.15); }
+
+        @keyframes subtlePan { 0% { transform: scale(1.05) translate(0, 0); } 100% { transform: scale(1.15) translate(-2%, -2%); } }
+        .bg-poster-grid { position: absolute; width: 120%; height: 120%; top: -10%; left: -10%; display: flex; flex-wrap: wrap; gap: 6px; opacity: 0.15; animation: subtlePan 30s ease-in-out infinite alternate; pointer-events: none; z-index: 1; }
+
+        @keyframes scrollLeft { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .animate-marquee { display: flex; width: max-content; animation: scrollLeft 30s linear infinite; }
+
+        .reveal { opacity: 0; transform: translateY(30px) scale(0.98); transition: all 0.8s var(--apple-ease); }
+        .reveal.active { opacity: 1; transform: translateY(0) scale(1); }
+        
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="flex justify-center selection:bg-[#E50914] selection:text-white">
+
+    <div class="mobile-container overflow-y-auto pb-10">
+
+        <!-- HERO SECTION -->
+        <section class="relative w-full min-h-[90dvh] flex flex-col justify-end pb-12 overflow-hidden">
+            
+            <!-- Live Background -->
+            <div class="bg-poster-grid" id="bg-posters"></div>
+            <div class="absolute inset-0 z-10 bg-gradient-to-b from-black/20 via-black/60 to-[#000000] pointer-events-none"></div>
+
+            <!-- Top Nav -->
+            <header class="absolute top-0 w-full z-50 pt-safe px-5 py-5 flex justify-between items-center">
+                <div class="flex items-center gap-2">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E50914" stroke-width="3" stroke-linecap="round"><path d="M4 4L9 20L15 4L20 20"/></svg>
+                    <span class="font-bold text-lg tracking-tight text-white drop-shadow-md">NetFilla</span>
+                </div>
+                <a href="#premium-mods" class="text-white/70 hover:text-white font-medium text-xs tracking-wide transition">Browse Mods</a>
+            </header>
+
+            <!-- Hero Content -->
+            <div class="relative z-30 px-5 flex flex-col mt-auto w-full">
+                
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-4 self-start">
+                    <div class="w-1.5 h-1.5 rounded-full bg-[#E50914] animate-pulse"></div>
+                    <span class="text-white/80 font-bold text-[10px] tracking-[0.2em] uppercase">Premium Cinematic</span>
+                </div>
+
+                <h1 class="font-black text-6xl text-white mb-3 tracking-tighter leading-[0.95] drop-shadow-2xl">
+                    UNLIMITED <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-[#FF4B52] to-[#E50914]">CINEMA.</span>
+                </h1>
+                
+                <p class="text-gray-400 font-medium text-sm leading-relaxed mb-8 max-w-[90%]">
+                    Dive into a boundless universe of movies and TV shows. Zero ads. Pure entertainment, engineered for your device.
+                </p>
+                
+                <!-- HARDCODED ORIGINAL LINKS -->
+                <div class="flex flex-col gap-3 w-full">
+                    <!-- NetFilla Link -->
+                    <a href="https://www.mediafire.com/file/8xf7om197soioht/NetFilla_1.0.apk/file" target="_blank" 
+                       class="btn-premium w-full py-4 px-5 rounded-[20px] flex items-center justify-between group">
+                        <div class="flex flex-col text-left">
+                            <span class="font-bold text-white text-[16px] leading-tight">Get NetFilla 1.0</span>
+                            <span class="text-white/70 text-[11px] font-medium tracking-wide">The Official Streaming App</span>
+                        </div>
+                        <div class="bg-white/20 p-2 rounded-full">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        </div>
+                    </a>
+
+                    <!-- MovieBox Link -->
+                    <a href="https://www.mediafire.com/file/l84tpcjlvblowqn/MovieBox_4.0.02.0903.02.apk/file" target="_blank" 
+                       class="btn-glass w-full py-4 px-5 rounded-[20px] flex items-center justify-between group">
+                        <div class="flex flex-col text-left">
+                            <span class="font-bold text-white text-[16px] leading-tight">MovieBox Pro</span>
+                            <span class="text-white/50 text-[11px] font-medium tracking-wide">Premium Modded Version</span>
+                        </div>
+                        <div class="bg-white/10 p-2 rounded-full">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- MARQUEE SHOWCASE -->
+        <section class="relative w-full overflow-hidden flex flex-col gap-3 py-6 bg-black z-20">
+            <div class="absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-black to-transparent z-40"></div>
+            <div class="absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-black to-transparent z-40"></div>
+            <div class="animate-marquee gap-3 ml-4" id="marquee-1"></div>
+        </section>
+
+        <!-- DYNAMIC FIREBASE SECTION: PREMIUM MOD APKS -->
+        <section id="premium-mods" class="pt-16 pb-12 px-5 relative z-20 bg-black">
+            <div class="mb-8 reveal">
+                <h2 class="font-black text-3xl text-white tracking-tight mb-1">Premium Mods</h2>
+                <p class="text-gray-400 text-sm font-medium">Exclusive ad-free apps for your ecosystem.</p>
+            </div>
+
+            <!-- This container will be populated by Firebase -->
+            <div id="dynamic-mods-container" class="flex flex-col gap-4">
+                <div class="text-center py-6">
+                    <div class="animate-spin w-6 h-6 border-2 border-[#E50914] border-t-transparent rounded-full mx-auto"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ECOSYSTEM FEATURES -->
+        <section class="py-12 px-5 relative z-20 bg-black">
+            <div class="flex flex-col gap-4">
+                <div class="glass-card p-6 reveal flex flex-col items-start bg-gradient-to-br from-white/10 to-transparent">
+                    <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mb-4">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E50914" stroke-width="2.5"><rect x="2" y="7" width="20" height="15" rx="4" ry="4"></rect><polyline points="17 2 12 7 7 2"></polyline></svg>
+                    </div>
+                    <h3 class="font-bold text-xl text-white mb-1">4K Ultra HD</h3>
+                    <p class="text-gray-400 text-xs font-medium leading-relaxed">Experience cinema directly on your device. Blazing fast servers delivering buffer-free 4K quality globally.</p>
+                </div>
+
+                <div class="glass-card p-6 reveal flex flex-col items-start bg-gradient-to-br from-white/10 to-transparent">
+                    <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mb-4">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E50914" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    </div>
+                    <h3 class="font-bold text-xl text-white mb-1">Zero Interruption</h3>
+                    <p class="text-gray-400 text-xs font-medium leading-relaxed">Your time is yours. Watch your favorite shows without a single ad, popup, or banner ever.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="py-10 text-center relative z-20 border-t border-white/5 mx-5">
+            <div class="flex items-center justify-center gap-1.5 opacity-40 mb-2">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M4 4L9 20L15 4L20 20"/></svg>
+                <span class="font-bold text-sm tracking-tight text-white">NetFilla</span>
+            </div>
+            <p class="text-gray-600 text-[10px] font-semibold uppercase tracking-widest">© 2024 Premium Ecosystem</p>
+        </footer>
+
+    </div>
+
+    <!-- FIREBASE & LOGIC -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+        import { getFirestore, collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+
+        // NEW FIREBASE CONFIG (Doha Center)
+        const firebaseConfig = {
+            apiKey: "AIzaSyAxv0kNe_rHAenbSJWnTEhw5q0s2jSq_lo",
+            authDomain: "doha-center.firebaseapp.com",
+            databaseURL: "https://doha-center-default-rtdb.firebaseio.com",
+            projectId: "doha-center",
+            storageBucket: "doha-center.firebasestorage.app",
+            messagingSenderId: "818788344432",
+            appId: "1:818788344432:web:acb930b0df7357e33d8ab5",
+            measurementId: "G-8EH3J82NHX"
+        };
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Fetch Mod APKs from Firebase
+        async function loadMods() {
+            const container = document.getElementById('dynamic-mods-container');
+            try {
+                const q = query(collection(db, "mod_apks"), orderBy("createdAt", "desc"));
+                const querySnapshot = await getDocs(q);
+                
+                if (querySnapshot.empty) {
+                    container.innerHTML = `<p class="text-gray-600 text-xs font-medium text-center py-4">No premium mods available right now.</p>`;
+                    return;
+                }
+                
+                container.innerHTML = "";
+                
+                querySnapshot.forEach((doc) => {
+                    const data = doc.data();
+                    container.innerHTML += `
+                        <div class="glass-card reveal flex items-center p-3.5 pr-4 border border-white/10 hover:border-white/20 transition-colors">
+                            <img src="${data.iconUrl}" class="w-14 h-14 rounded-xl object-cover shadow-lg bg-black border border-white/5">
+                            <div class="flex-1 ml-4 flex flex-col justify-center">
+                                <h3 class="font-bold text-white text-[15px] leading-tight mb-0.5">${data.name}</h3>
+                                <p class="text-gray-400 text-[11px] font-medium leading-tight line-clamp-2 pr-2">${data.desc}</p>
+                            </div>
+                            <a href="${data.downloadUrl}" target="_blank" class="bg-white/10 hover:bg-white/20 text-white border border-white/10 px-4 py-2 rounded-full text-xs font-bold active:scale-95 transition-all flex items-center gap-1.5">
+                                Get
+                            </a>
+                        </div>
+                    `;
+                });
+
+                const newReveals = container.querySelectorAll('.reveal');
+                newReveals.forEach(el => revealObserver.observe(el));
+
+            } catch (error) {
+                container.innerHTML = `<p class="text-red-500 text-xs font-medium text-center py-4">Failed to connect to database.</p>`;
+            }
+        }
+
+        loadMods();
+
+        // TMDB Poster logic for Background & Marquee
+        const TMDB_API_KEY = "15d2ea6d0dc1d476efbca3eba2b9bbfb"; 
+        const BASE_IMG_URL = "https://image.tmdb.org/t/p/w500";
+
+        async function loadPosters() {
+            try {
+                const res = await fetch(`https://api.themoviedb.org/3/trending/all/week?api_key=${TMDB_API_KEY}`);
+                const data = await res.json();
+                const posters = data.results.map(item => item.poster_path).filter(Boolean);
+                
+                // 1. Background Grid
+                const bgGrid = document.getElementById('bg-posters');
+                bgGrid.innerHTML = '';
+                for (let i = 0; i < 30; i++) {
+                    const img = document.createElement('img');
+                    img.src = BASE_IMG_URL + posters[i % posters.length];
+                    img.className = "w-[80px] aspect-[2/3] object-cover rounded-lg shadow-2xl brightness-50 contrast-125 mix-blend-screen";
+                    bgGrid.appendChild(img);
+                }
+
+                // 2. Foreground Marquee
+                const track = document.getElementById('marquee-1');
+                let shuffled = [...posters].sort(() => 0.5 - Math.random());
+                const fullList = [...shuffled, ...shuffled, ...shuffled]; 
+                let html = '';
+                fullList.forEach(path => {
+                    html += `<div class="w-[90px] aspect-[2/3] flex-shrink-0 rounded-[14px] overflow-hidden border border-white/10 shadow-xl">
+                                <img src="${BASE_IMG_URL}${path}" class="w-full h-full object-cover">
+                             </div>`;
+                });
+                track.innerHTML = html;
+            } catch(e) {}
+        }
+
+        loadPosters();
+
+        // Scroll Reveal Observer
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); }});
+        }, { threshold: 0.1, rootMargin: "0px 0px -20px 0px" });
+        
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    </script>
+</body>
+</html>
